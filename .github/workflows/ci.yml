@@ -15,6 +15,7 @@ env:
 jobs:
   export-html5:
     runs-on: ubuntu-22.04
+    environment: prod
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -37,4 +38,3 @@ jobs:
           ITCH_GAME: ${{ vars.ITCH_GAME }}
           ITCH_USER: ${{ vars.ITCH_USER }}
           PACKAGE: ${{ env.EXPORT_PATH }}
-
