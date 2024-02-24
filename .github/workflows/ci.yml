@@ -33,7 +33,7 @@ jobs:
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
-          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: html5
           ITCH_GAME: ${{ vars.ITCH_GAME }}
           ITCH_USER: ${{ vars.ITCH_USER }}
