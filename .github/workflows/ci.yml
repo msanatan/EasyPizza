@@ -1,0 +1,40 @@
+name: "Export to itch.io"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  # This should match what's in the export_presets.cfg
+  GODOT_EXECUTABLE_URL: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
+  GODOT_TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
+  EXPORT_NAME: EasyPizza-HTML5
+  EXPORT_PATH: build/web
+
+jobs:
+  export-html5:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Add export presets
+        run: |
+          mv ci_export_presets.cfg export_presets.cfg
+      - name: Web Build
+        id: build
+        uses: firebelley/godot-export@v5.2.1
+        with:
+          godot_executable_download_url: ${{ env.GODOT_EXECUTABLE_URL }}
+          godot_export_templates_download_url: ${{ env.GODOT_TEMPLATES_URL }}
+          relative_project_path: ./
+          relative_export_path: ${{ env.EXPORT_PATH }}
+      # Upload to itch.io
+      - uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: ${{ vars.ITCH_GAME }}
+          ITCH_USER: ${{ vars.ITCH_USER }}
+          PACKAGE: ${{ env.EXPORT_PATH }}
+
