@@ -4,26 +4,6 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="IngredientsContainer" type="GridContainer" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 198.0
-offset_top = 890.0
-offset_right = 882.0
-offset_bottom = 1574.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 3
-
-[node name="TextureButton" type="TextureButton" parent="IngredientsContainer"]
-layout_mode = 2
-
 [node name="Ingredients" type="Node2D" parent="."]
 
 [node name="Ingredient" parent="Ingredients" instance=ExtResource("1_v77gt")]
