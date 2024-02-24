@@ -1,3 +1,4 @@
+class_name BaseIngredient
 extends Area2D
 
 
