@@ -7,9 +7,9 @@
 
 [node name="Ingredient" type="Area2D"]
 script = ExtResource("1_drped")
+texture = ExtResource("2_vpe3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vpe3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(10, 10)
