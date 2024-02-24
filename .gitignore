@@ -10,3 +10,5 @@
 # Ignore silent wolf config
 silentwolf_config.json
 
+export_presets.cfg
+
