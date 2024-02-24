@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Ignore VS Code files
+.vscode/
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore silent wolf config
+silentwolf_config.json
+
