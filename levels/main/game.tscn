@@ -7,6 +7,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
+round_duration_seconds = 10
 
 [node name="PizzaPool" type="Node2D" parent="."]
 
@@ -31,3 +32,7 @@ text = "Ready?"
 
 [node name="IngredientsContainer" type="Node2D" parent="."]
 position = Vector2(540, 1024)
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

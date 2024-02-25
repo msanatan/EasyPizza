@@ -10,9 +10,11 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @export var ingredient_size = 196
 @export var row_size = 3
 @export var score_increment = 5
+@export var round_duration_seconds = 60
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
 @onready var ready_label: Label = $HUD/ReadyLabel
+@onready var game_timer: Timer = $GameTimer
 
 var current_state: GameState = GameState.READY
 var score = 0
@@ -32,6 +34,8 @@ func _ready():
 	ingredient_data.shuffle()
 	setup_ingredients()
 	setup_pizzas()
+	game_timer.wait_time = round_duration_seconds
+	game_timer.start()
 
 
 func _input(event):
@@ -144,3 +148,11 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 	remaining_guesses -= 1
 	if remaining_guesses == 0:
 		end_round()
+
+
+func _on_game_timer_timeout():
+	print("Game is over!")
+	# End the game because the 
+	current_state = GameState.ROUND_OVER
+	for ingredient in available_ingredients:
+		ingredient.set_is_playing(false)
