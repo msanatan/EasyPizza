@@ -11,5 +11,5 @@ func _ready():
 
 
 func _on_input_event(viewport, event, shape_idx):
-	if is_playing and (event is InputEventScreenTouch or event is InputEventMouseButton) and event.pressed:
+	if is_playing and Input.is_action_just_pressed("click"):
 		print("Sprite touched")
