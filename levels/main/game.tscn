@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxp5s1pwqmlg2"]
 
-[ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/base_ingredient/base_ingredient.tscn" id="1_v77gt"]
+[ext_resource type="PackedScene" uid="uid://cs3jsteycv6di" path="res://ingredients/ingredients_container/ingredients_container.tscn" id="1_u8pf2"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Ingredients" type="Node2D" parent="."]
-
-[node name="Ingredient" parent="Ingredients" instance=ExtResource("1_v77gt")]
+[node name="IngredientsContainer" parent="." instance=ExtResource("1_u8pf2")]
+position = Vector2(540, 1024)
