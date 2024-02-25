@@ -2,6 +2,7 @@ class_name Game
 extends Node2D
 
 enum Difficuluty {NORMAL, HARD}
+enum GameState {READY, PLAYING, ROUND_OVER}
 
 @export var resources_path: String = "res://ingredients/variations/"
 @export var ingredient_scene: PackedScene
@@ -11,6 +12,7 @@ enum Difficuluty {NORMAL, HARD}
 
 @onready var ingredients_container = $IngredientsContainer
 
+var current_state: GameState = GameState.READY
 var ingredient_data: Array[IngredientData] = []
 var selected_ingredients: Array[Ingredient] = []
 
@@ -19,6 +21,14 @@ func _ready():
 	ingredient_data = load_resources_from_path()
 	ingredient_data.shuffle()
 	setup_ingredients()
+
+
+func _input(event):
+	if current_state == GameState.READY and Input.is_action_just_pressed("click"):
+		current_state = GameState.PLAYING
+		# Make every ingredient active so they can react to the user selection
+		for ingredient in selected_ingredients:
+			ingredient.is_playing = true
 
 
 ## Instiante ingredient scenes and adds them to the game
