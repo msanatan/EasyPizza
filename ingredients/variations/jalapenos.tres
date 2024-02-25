@@ -7,3 +7,4 @@
 script = ExtResource("1_ypmgq")
 name = "jalapenos"
 container_texture = ExtResource("2_ap3yw")
+pizza_texture = ExtResource("2_ap3yw")

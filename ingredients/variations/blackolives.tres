@@ -7,3 +7,4 @@
 script = ExtResource("1_18uv1")
 name = "blackolives"
 container_texture = ExtResource("2_6euxr")
+pizza_texture = ExtResource("2_6euxr")

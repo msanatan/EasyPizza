@@ -7,3 +7,4 @@
 script = ExtResource("1_ymnvm")
 name = "redonions"
 container_texture = ExtResource("2_l44mg")
+pizza_texture = ExtResource("2_l44mg")

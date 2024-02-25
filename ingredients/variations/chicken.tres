@@ -7,3 +7,4 @@
 script = ExtResource("1_ejsyn")
 name = "chicken"
 container_texture = ExtResource("2_8m2vs")
+pizza_texture = ExtResource("2_8m2vs")

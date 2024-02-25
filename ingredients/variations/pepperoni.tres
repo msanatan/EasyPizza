@@ -7,3 +7,4 @@
 script = ExtResource("1_f10xy")
 name = "pepperoni"
 container_texture = ExtResource("2_1h6sr")
+pizza_texture = ExtResource("2_1h6sr")
