@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://11imkwjsocn7"]
+
+[ext_resource type="Texture2D" uid="uid://ctes3ctutw8n5" path="res://assets/images/pizza-placeholder.png" id="1_lvlkb"]
+[ext_resource type="Script" path="res://pizza/pizza.gd" id="2_k2syf"]
+
+[sub_resource type="Animation" id="Animation_jgq6y"]
+resource_name = "pizza_enter_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-192, 512), Vector2(540, 512)]
+}
+
+[sub_resource type="Animation" id="Animation_b1x7j"]
+resource_name = "pizza_exit_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(540, 512), Vector2(540, -192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdv0e"]
+_data = {
+"pizza_enter_scene": SubResource("Animation_jgq6y"),
+"pizza_exit_scene": SubResource("Animation_b1x7j")
+}
+
+[node name="Pizza" type="Sprite2D"]
+position = Vector2(-192, 512)
+texture = ExtResource("1_lvlkb")
+script = ExtResource("2_k2syf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qdv0e")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
