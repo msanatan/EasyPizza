@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=3 format=3 uid="uid://dxp5s1pwqmlg2"]
 
+[ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://cs3jsteycv6di" path="res://ingredients/ingredients_container/ingredients_container.tscn" id="1_u8pf2"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_ey8fq")
 
 [node name="IngredientsContainer" parent="." instance=ExtResource("1_u8pf2")]
 position = Vector2(540, 1024)
