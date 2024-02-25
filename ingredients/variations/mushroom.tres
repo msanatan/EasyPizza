@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_b0j01")
 name = "mushroom"
-texture = ExtResource("2_rvwih")
+container_texture = ExtResource("2_rvwih")

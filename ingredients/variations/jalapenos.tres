@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_ypmgq")
 name = "jalapenos"
-texture = ExtResource("2_ap3yw")
+container_texture = ExtResource("2_ap3yw")

@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_18uv1")
 name = "blackolives"
-texture = ExtResource("2_6euxr")
+container_texture = ExtResource("2_6euxr")

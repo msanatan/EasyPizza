@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_f10xy")
 name = "pepperoni"
-texture = ExtResource("2_1h6sr")
+container_texture = ExtResource("2_1h6sr")

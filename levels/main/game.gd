@@ -33,7 +33,7 @@ func setup_ingredients():
 		var x_offset = (i % row_size) * ingredient_size
 		var y_offset = (i / row_size) * ingredient_size
 		var ingredient: Ingredient = ingredient_scene.instantiate()
-		ingredient.texture = ingredient_data[i].texture
+		ingredient.texture = ingredient_data[i].container_texture
 		ingredient.ingredient_name = ingredient_data[i].name
 		ingredient.position = start_position + Vector2(x_offset, y_offset)
 		ingredients_container.add_child(ingredient)
