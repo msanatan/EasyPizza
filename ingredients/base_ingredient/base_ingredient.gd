@@ -10,11 +10,6 @@ func _ready():
 	$Sprite2D.texture = texture
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_input_event(viewport, event, shape_idx):
 	if is_playing and (event is InputEventScreenTouch or event is InputEventMouseButton) and event.pressed:
 		print("Sprite touched")

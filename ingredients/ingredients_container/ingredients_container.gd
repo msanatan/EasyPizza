@@ -9,9 +9,9 @@ enum Difficuluty {NORMAL, HARD}
 @export var row_size = 3
 
 var ingredient_data: Array[IngredientData] = []
-var ingredients: Array[BaseIngredient] = []
+var selected_ingredients: Array[BaseIngredient] = []
+var selected_ingredient_data: Array[IngredientData] = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	ingredient_data = load_resources_from_path()
@@ -19,6 +19,7 @@ func _ready():
 	setup_ingredients()
 
 
+## Instiante ingredient scenes and adds them to the game
 func setup_ingredients():
 	var limit = 6 if mode == Difficuluty.NORMAL else 9
 	var start_position = position - Vector2(ingredient_size, 0)
@@ -34,9 +35,10 @@ func setup_ingredients():
 		ingredient.ingredient_name = ingredient_data[i].name
 		ingredient.position = start_position + Vector2(x_offset, y_offset)
 		add_child(ingredient)
-		ingredients.append(ingredient)
+		selected_ingredients.append(ingredient)
+		selected_ingredient_data.append(ingredient_data[i])
 
-
+## Loads the ingredients from the file system
 func load_resources_from_path() -> Array[IngredientData]:
 	var loaded_data: Array[IngredientData] = []
 	var dir = DirAccess.open(resources_path)
@@ -45,7 +47,6 @@ func load_resources_from_path() -> Array[IngredientData]:
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
-				#loaded_data.append(ResourceLoader.load(resources_path + file_name, "IngredientData"))
 				loaded_data.append(load(resources_path + file_name))
 			file_name = dir.get_next()
 	else:
@@ -53,5 +54,17 @@ func load_resources_from_path() -> Array[IngredientData]:
 	return loaded_data
 
 
-func _process(delta):
-	pass
+## This function returns a random selection of pizza ingredients.
+## The pizza should be able to use ingredients that are available to the player.
+func get_random_ingredient_data(num_ingredients: int) -> Array[IngredientData]:
+	var chosen_ingredients = []
+	while chosen_ingredients.size() < num_ingredients:
+		var sid = selected_ingredient_data.pick_random()
+		var already_selected = false
+		for ci in chosen_ingredients:
+			if ci.name == sid.name:
+				already_selected = true
+				break
+		if not already_selected:
+			chosen_ingredients.append(sid)
+	return chosen_ingredients
