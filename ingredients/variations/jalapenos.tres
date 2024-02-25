@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://bqmf8vh8g56b6"]
+
+[ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_ypmgq"]
+[ext_resource type="Texture2D" uid="uid://ddjb0f65tpg5b" path="res://assets/images/placeholder04.png" id="2_ap3yw"]
+
+[resource]
+script = ExtResource("1_ypmgq")
+name = "jalapenos"
+texture = ExtResource("2_ap3yw")

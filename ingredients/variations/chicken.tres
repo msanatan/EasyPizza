@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://qeaj5eug4f58"]
+
+[ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_ejsyn"]
+[ext_resource type="Texture2D" uid="uid://c7x8w3ea8s44s" path="res://assets/images/placeholder02.png" id="2_8m2vs"]
+
+[resource]
+script = ExtResource("1_ejsyn")
+name = "chicken"
+texture = ExtResource("2_8m2vs")

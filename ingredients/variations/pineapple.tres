@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://bpklbkylqt3cx"]
+
+[ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_xe4sj"]
+[ext_resource type="Texture2D" uid="uid://c35lbse0jdksk" path="res://assets/images/placeholder07.png" id="2_5nwks"]
+
+[resource]
+script = ExtResource("1_xe4sj")
+name = "pineapple"
+texture = ExtResource("2_5nwks")
