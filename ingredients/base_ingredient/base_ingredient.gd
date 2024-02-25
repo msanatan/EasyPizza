@@ -2,7 +2,7 @@ class_name BaseIngredient
 extends Area2D
 
 @export var texture: Texture2D
-@export var ingredient: String
+@export var ingredient_name: String
 @export var is_playing: bool = false
 
 # Called when the node enters the scene tree for the first time.
