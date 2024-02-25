@@ -9,17 +9,21 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @export var mode: Difficuluty
 @export var ingredient_size = 196
 @export var row_size = 3
+@export var score_increment = 5
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
 @onready var ready_label: Label = $HUD/ReadyLabel
 
 var current_state: GameState = GameState.READY
+var score = 0
 var ingredient_data: Array[IngredientData] = []
 var available_ingredients: Array[Ingredient] = []
 var available_ingredient_data: Array[IngredientData] = []
-var current_ingredeints: Array[IngredientData] = []
+var current_ingredients: Array[IngredientData] = []
+var already_guessed_ingredients: Array[String] = []
 var pizzas: Array[Pizza]
-var current_pizza: Pizza
+var current_pizza_index: int
+var remaining_guesses: int
 
 
 func _ready():
@@ -40,14 +44,23 @@ func _input(event):
 		begin_round()
 
 
-## 
+## Gets the ingredients to be guessed
 func begin_round() -> void:
-	current_ingredeints = get_random_ingredient_data(1)
-	current_pizza.add_toppings(current_ingredeints)
-	current_pizza.enter_scene()
+	already_guessed_ingredients = []
+	current_ingredients = get_random_ingredient_data(1)
+	remaining_guesses = current_ingredients.size()
+	pizzas[current_pizza_index].add_toppings(current_ingredients)
+	pizzas[current_pizza_index].enter_scene()
 
 
-## Instiante ingredient scenes and adds them to the game
+## Move the current pizza off and start a new round
+func end_round() -> void:
+	pizzas[current_pizza_index].exit_scene()
+	current_pizza_index = (current_pizza_index + 1) % 2
+	begin_round()
+
+
+## Instantiante ingredient scenes and adds them to the game
 func setup_ingredients():
 	var limit = 6 if mode == Difficuluty.NORMAL else 9
 	var start_position = position - Vector2(ingredient_size, 0)
@@ -62,6 +75,7 @@ func setup_ingredients():
 		ingredient.texture = ingredient_data[i].container_texture
 		ingredient.ingredient_name = ingredient_data[i].name
 		ingredient.position = start_position + Vector2(x_offset, y_offset)
+		ingredient.connect("ingredient_selected", check_ingredient_selection)
 		ingredients_container.add_child(ingredient)
 		available_ingredients.append(ingredient)
 		available_ingredient_data.append(ingredient_data[i])
@@ -74,7 +88,7 @@ func setup_pizzas():
 	var children = $PizzaPool.get_children()
 	for child in children:
 		pizzas.append(child as Pizza)
-	current_pizza = pizzas[0]
+	current_pizza_index = 0
 
 
 ## Loads the ingredients from the file system
@@ -107,3 +121,26 @@ func get_random_ingredient_data(num_ingredients: int) -> Array[IngredientData]:
 		if not already_selected:
 			chosen_ingredients.append(sid)
 	return chosen_ingredients
+
+
+## When a user selects and ingredient, check if it was correct or wrong
+## We add points to their score if correct, and give them feedback
+## If they ran out of guesses, we go to the next round
+func check_ingredient_selection(ingredient_name: String) -> void:
+	var is_correct = false
+	for ingredient in current_ingredients:
+		if ingredient.name == ingredient_name and not already_guessed_ingredients.has(ingredient_name):
+			is_correct = true
+			already_guessed_ingredients.append(ingredient_name)
+			break
+
+	if is_correct:
+		score += score_increment
+		print("Found a matching ingredient! New score is %d" % score)
+		# TODO: Do something to show that they got it right
+	else:
+		print("%s is not on the pizza! New score is %d" % [ingredient_name, score])
+
+	remaining_guesses -= 1
+	if remaining_guesses == 0:
+		end_round()
