@@ -1,4 +1,4 @@
-class_name BaseIngredient
+class_name Ingredient
 extends Area2D
 
 @export var texture: Texture2D

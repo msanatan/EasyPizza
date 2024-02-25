@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba4wxpnile4r0"]
 
-[ext_resource type="Script" path="res://ingredients/base_ingredient/base_ingredient.gd" id="1_drped"]
+[ext_resource type="Script" path="res://ingredients/ingredient/ingredient.gd" id="1_drped"]
 [ext_resource type="Texture2D" uid="uid://cl3g5bmdtrdpj" path="res://assets/images/placeholder01.png" id="2_vpe3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i06o4"]

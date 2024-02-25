@@ -12,7 +12,7 @@ enum Difficuluty {NORMAL, HARD}
 @onready var ingredients_container = $IngredientsContainer
 
 var ingredient_data: Array[IngredientData] = []
-var selected_ingredients: Array[BaseIngredient] = []
+var selected_ingredients: Array[Ingredient] = []
 
 func _ready():
 	randomize()
@@ -32,7 +32,7 @@ func setup_ingredients():
 
 		var x_offset = (i % row_size) * ingredient_size
 		var y_offset = (i / row_size) * ingredient_size
-		var ingredient: BaseIngredient = ingredient_scene.instantiate()
+		var ingredient: Ingredient = ingredient_scene.instantiate()
 		ingredient.texture = ingredient_data[i].texture
 		ingredient.ingredient_name = ingredient_data[i].name
 		ingredient.position = start_position + Vector2(x_offset, y_offset)
@@ -58,7 +58,7 @@ func load_resources_from_path() -> Array[IngredientData]:
 
 ## This function returns a random selection of pizza ingredients.
 ## The pizza should be able to use ingredients that are available to the player.
-func get_random_ingredient_data(num_ingredients: int) -> Array[BaseIngredient]:
+func get_random_ingredient_data(num_ingredients: int) -> Array[Ingredient]:
 	var chosen_ingredients = []
 	while chosen_ingredients.size() < num_ingredients:
 		var sid = selected_ingredients.pick_random()
