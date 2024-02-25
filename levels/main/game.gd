@@ -12,24 +12,26 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
 @onready var ready_label: Label = $HUD/ReadyLabel
-@onready var pizza_animation: AnimationPlayer = $Pizza/AnimationPlayer
 
 var current_state: GameState = GameState.READY
 var ingredient_data: Array[IngredientData] = []
 var selected_ingredients: Array[Ingredient] = []
+var pizzas: Array[Pizza]
+var current_pizza: Pizza
 
 func _ready():
 	randomize()
 	ingredient_data = load_resources_from_path()
 	ingredient_data.shuffle()
 	setup_ingredients()
+	setup_pizzas()
 
 
 func _input(event):
 	if current_state == GameState.READY and Input.is_action_just_pressed("click"):
 		current_state = GameState.PLAYING
 		ready_label.hide()
-		pizza_animation.play("pizza_enter_scene")
+		current_pizza.enter_scene()
 		# Make every ingredient active so they can react to the user selection
 		for ingredient in selected_ingredients:
 			ingredient.set_is_playing(true)
@@ -53,6 +55,12 @@ func setup_ingredients():
 		ingredients_container.add_child(ingredient)
 		selected_ingredients.append(ingredient)
 
+
+func setup_pizzas():
+	var children = $PizzaPool.get_children()
+	for child in children:
+		pizzas.append(child as Pizza)
+	current_pizza = pizzas[0]
 
 ## Loads the ingredients from the file system
 func load_resources_from_path() -> Array[IngredientData]:

@@ -1,64 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=4 format=3 uid="uid://dxp5s1pwqmlg2"]
 
 [ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/ingredient/ingredient.tscn" id="2_e1ilo"]
-[ext_resource type="Texture2D" uid="uid://ctes3ctutw8n5" path="res://assets/images/pizza-placeholder.png" id="3_b02xl"]
-
-[sub_resource type="Animation" id="Animation_1gsp6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-160, 320)]
-}
-
-[sub_resource type="Animation" id="Animation_jgq6y"]
-resource_name = "pizza_enter_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-176, 320), Vector2(540, 320)]
-}
-
-[sub_resource type="Animation" id="Animation_b1x7j"]
-resource_name = "pizza_exit_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(540, 320), Vector2(540, -176)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdv0e"]
-_data = {
-"RESET": SubResource("Animation_1gsp6"),
-"pizza_enter_scene": SubResource("Animation_jgq6y"),
-"pizza_exit_scene": SubResource("Animation_b1x7j")
-}
+[ext_resource type="PackedScene" uid="uid://11imkwjsocn7" path="res://pizza/pizza.tscn" id="3_yf4nk"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
+
+[node name="PizzaPool" type="Node2D" parent="."]
+
+[node name="Pizza01" parent="PizzaPool" instance=ExtResource("3_yf4nk")]
+
+[node name="Pizza02" parent="PizzaPool" instance=ExtResource("3_yf4nk")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -74,15 +28,6 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 132
 text = "Ready?"
-
-[node name="Pizza" type="Sprite2D" parent="."]
-position = Vector2(-160, 320)
-texture = ExtResource("3_b02xl")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pizza"]
-libraries = {
-"": SubResource("AnimationLibrary_qdv0e")
-}
 
 [node name="IngredientsContainer" type="Node2D" parent="."]
 position = Vector2(540, 1024)
