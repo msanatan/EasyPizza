@@ -1,6 +1,8 @@
 class_name Ingredient
 extends Area2D
 
+signal ingredient_selected
+
 @export var texture: Texture2D
 @export var ingredient_name: String
 @export var is_playing: bool = false
@@ -15,7 +17,8 @@ func _ready():
 
 func _on_input_event(viewport, event, shape_idx):
 	if is_playing and Input.is_action_just_pressed("click"):
-		print("Sprite touched")
+		print("%s was touched" % ingredient_name)
+		emit_signal("ingredient_selected", ingredient_name)
 
 
 ## Toggle whether the ingredients are visible or covered
