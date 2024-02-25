@@ -60,6 +60,21 @@ _data = {
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ReadyLabel" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 224.0
+offset_right = 225.0
+offset_bottom = 405.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 132
+text = "Ready?"
+
 [node name="Pizza" type="Sprite2D" parent="."]
 position = Vector2(-160, 320)
 texture = ExtResource("3_b02xl")
