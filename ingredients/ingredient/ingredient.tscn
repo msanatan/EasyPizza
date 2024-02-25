@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba4wxpnile4r0"]
+[gd_scene load_steps=5 format=3 uid="uid://ba4wxpnile4r0"]
 
 [ext_resource type="Script" path="res://ingredients/ingredient/ingredient.gd" id="1_drped"]
 [ext_resource type="Texture2D" uid="uid://cl3g5bmdtrdpj" path="res://assets/images/placeholder01.png" id="2_vpe3n"]
+[ext_resource type="Texture2D" uid="uid://co0bvl7vbmqig" path="res://assets/images/cover-placeholder.png" id="3_pl886"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i06o4"]
 
@@ -10,6 +11,9 @@ script = ExtResource("1_drped")
 texture = ExtResource("2_vpe3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CoverSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_pl886")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(10, 10)

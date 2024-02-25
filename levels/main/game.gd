@@ -32,7 +32,7 @@ func _input(event):
 		pizza_animation.play("pizza_enter_scene")
 		# Make every ingredient active so they can react to the user selection
 		for ingredient in selected_ingredients:
-			ingredient.is_playing = true
+			ingredient.set_is_playing(true)
 
 
 ## Instiante ingredient scenes and adds them to the game
