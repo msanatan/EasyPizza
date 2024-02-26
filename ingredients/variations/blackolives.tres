@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="IngredientData" load_steps=4 format=3 uid="uid://dlo8w86rc1cho"]
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://dlo8w86rc1cho"]
 
 [ext_resource type="Texture2D" uid="uid://dfevmxjl1fva7" path="res://assets/images/blackolive.png" id="1_7e3gp"]
 [ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_18uv1"]
-[ext_resource type="Texture2D" uid="uid://cl3g5bmdtrdpj" path="res://assets/images/placeholder01.png" id="2_6euxr"]
 
 [resource]
 script = ExtResource("1_18uv1")
 name = "blackolives"
 container_texture = ExtResource("1_7e3gp")
-pizza_texture = ExtResource("2_6euxr")

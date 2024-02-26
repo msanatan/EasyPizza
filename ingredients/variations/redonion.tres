@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="IngredientData" load_steps=4 format=3 uid="uid://c5li8bnkkaudy"]
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://c5li8bnkkaudy"]
 
 [ext_resource type="Texture2D" uid="uid://brf71nlli8so8" path="res://assets/images/redonion.png" id="1_r1hkj"]
 [ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_ymnvm"]
-[ext_resource type="Texture2D" uid="uid://rvlh8uymbrvu" path="res://assets/images/placeholder08.png" id="2_l44mg"]
 
 [resource]
 script = ExtResource("1_ymnvm")
 name = "redonion"
 container_texture = ExtResource("1_r1hkj")
-pizza_texture = ExtResource("2_l44mg")
