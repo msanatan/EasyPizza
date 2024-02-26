@@ -2,24 +2,33 @@ class_name Pizza
 extends Sprite2D
 
 @onready var animation_player = $AnimationPlayer
+@onready var toppings_container = $Toppings
 
 var original_position: Vector2
+var toppings: Array[Sprite2D]
+var toppings_placeholder_texture: Texture2D
 
 func _ready():
 	original_position = position
+	toppings_placeholder_texture = toppings_container.get_child(0).texture
+	for child in toppings_container.get_children():
+		toppings.append(child as Sprite2D)
 	
 
 ## Show toppings on pizza
 func add_toppings(ingredients: Array[IngredientData]) -> void:
-	for ingredient in ingredients:
-		var ingredient_sprite = Sprite2D.new()
-		ingredient_sprite.texture = ingredient.pizza_texture
-		add_child(ingredient_sprite)
+	var current_ingredient = 0
+	var different_ingredients = ingredients.size()
+	for topping in toppings:
+		topping.texture = ingredients[current_ingredient].container_texture
+		current_ingredient = (current_ingredient + 1) % different_ingredients
 
 
 ## Return the pizza to it's original state after it's used
 func reset() -> void:
 	position = original_position
+	for topping in toppings:
+		topping.texture = toppings_placeholder_texture
 
 
 ## Add toppings and bring pizza into the centre
