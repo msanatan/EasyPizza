@@ -4,7 +4,6 @@ extends Node2D
 enum Difficuluty {NORMAL, HARD}
 enum GameState {READY, PLAYING, ROUND_OVER}
 
-@export var resources_path: String = "res://ingredients/variations/"
 @export var ingredient_scene: PackedScene
 @export var mode: Difficuluty
 @export var ingredient_size = 256
@@ -38,7 +37,6 @@ var remaining_time: int
 
 func _ready():
 	randomize()
-	ingredient_data = load_resources_from_path()
 	ingredient_data.shuffle()
 	setup_ingredients()
 	setup_pizzas()
@@ -111,22 +109,6 @@ func setup_pizzas():
 	for child in children:
 		pizzas.append(child as Pizza)
 	current_pizza_index = 0
-
-
-## Loads the ingredients from the file system
-func load_resources_from_path() -> Array[IngredientData]:
-	var loaded_data: Array[IngredientData] = []
-	var dir = DirAccess.open(resources_path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir():
-				loaded_data.append(load(resources_path + file_name))
-			file_name = dir.get_next()
-	else:
-		print("An error occurred trying to read the ingredients")
-	return loaded_data
 
 
 ## This function returns a random selection of pizza ingredients.
