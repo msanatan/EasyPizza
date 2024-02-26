@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=6 format=3 uid="uid://dxp5s1pwqmlg2"]
 
 [ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/ingredient/ingredient.tscn" id="2_e1ilo"]
 [ext_resource type="PackedScene" uid="uid://11imkwjsocn7" path="res://pizza/pizza.tscn" id="3_yf4nk"]
+[ext_resource type="Theme" uid="uid://ddy7f277tnjo5" path="res://assets/themes/fonts/game-title.tres" id="4_vkhoa"]
+[ext_resource type="Theme" uid="uid://o8k6uollg46x" path="res://assets/themes/fonts/hud-text.tres" id="5_ctld7"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
@@ -21,18 +23,44 @@ round_duration_seconds = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -225.0
-offset_top = 224.0
-offset_right = 225.0
-offset_bottom = 405.0
+offset_left = -284.0
+offset_top = 384.0
+offset_right = 310.0
+offset_bottom = 582.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 132
+theme = ExtResource("4_vkhoa")
 text = "Ready?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+visible = false
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 257.0
+offset_bottom = 141.0
+theme = ExtResource("5_ctld7")
+text = "Score: "
+
+[node name="TimeRemainingLabel" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -496.0
+offset_top = 96.0
+offset_right = -64.0
+offset_bottom = 141.0
+grow_horizontal = 0
+theme = ExtResource("5_ctld7")
+text = "Time Remaining: "
 
 [node name="IngredientsContainer" type="Node2D" parent="."]
 position = Vector2(540, 1024)
 
 [node name="GameTimer" type="Timer" parent="."]
+
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

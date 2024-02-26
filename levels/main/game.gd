@@ -14,6 +14,8 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
 @onready var ready_label: Label = $HUD/ReadyLabel
+@onready var score_label: Label = $HUD/ScoreLabel
+@onready var time_remaining_label: Label = $HUD/TimeRemainingLabel
 @onready var game_timer: Timer = $GameTimer
 
 var current_state: GameState = GameState.READY
@@ -26,6 +28,7 @@ var already_guessed_ingredients: Array[String] = []
 var pizzas: Array[Pizza]
 var current_pizza_index: int
 var remaining_guesses: int
+var remaining_time: int
 
 
 func _ready():
@@ -34,17 +37,20 @@ func _ready():
 	ingredient_data.shuffle()
 	setup_ingredients()
 	setup_pizzas()
-	game_timer.wait_time = round_duration_seconds
-	game_timer.start()
 
 
 func _input(event):
 	if current_state == GameState.READY and Input.is_action_just_pressed("click"):
 		current_state = GameState.PLAYING
-		ready_label.hide()
 		# Make every ingredient active so they can react to the user selection
 		for ingredient in available_ingredients:
 			ingredient.set_is_playing(true)
+		remaining_time = round_duration_seconds
+		game_timer.start()
+		ready_label.hide()
+		score_label.text = "Score: %d" % score
+		score_label.show()
+		time_remaining_label.show()
 		begin_round()
 
 
@@ -139,9 +145,9 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 			break
 
 	if is_correct:
-		score += score_increment
 		print("Found a matching ingredient! New score is %d" % score)
-		# TODO: Do something to show that they got it right
+		score += score_increment
+		score_label.text = "Score: %d" % score
 	else:
 		print("%s is not on the pizza! New score is %d" % [ingredient_name, score])
 
@@ -151,8 +157,16 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 
 
 func _on_game_timer_timeout():
-	print("Game is over!")
-	# End the game because the 
-	current_state = GameState.ROUND_OVER
-	for ingredient in available_ingredients:
-		ingredient.set_is_playing(false)
+	remaining_time -= 1
+	time_remaining_label.text = "Time Remaining: %d" % remaining_time
+
+	if remaining_time == 0:
+		game_timer.stop()
+		current_state = GameState.ROUND_OVER
+		for ingredient in available_ingredients:
+			ingredient.set_is_playing(false)
+
+
+## If the user wants to play again, reload the scene
+func reload() -> void:
+	get_tree().reload_current_scene()
