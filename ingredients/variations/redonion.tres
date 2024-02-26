@@ -6,6 +6,6 @@
 
 [resource]
 script = ExtResource("1_ymnvm")
-name = "redonions"
+name = "redonion"
 container_texture = ExtResource("1_r1hkj")
 pizza_texture = ExtResource("2_l44mg")

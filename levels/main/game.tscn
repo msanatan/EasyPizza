@@ -1,10 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=22 format=3 uid="uid://dxp5s1pwqmlg2"]
 
 [ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/ingredient/ingredient.tscn" id="2_e1ilo"]
+[ext_resource type="Resource" uid="uid://4rdygcxqkayc" path="res://ingredients/variations/bacon.tres" id="3_ui66t"]
 [ext_resource type="PackedScene" uid="uid://11imkwjsocn7" path="res://pizza/pizza.tscn" id="3_yf4nk"]
+[ext_resource type="Resource" uid="uid://dlo8w86rc1cho" path="res://ingredients/variations/blackolives.tres" id="4_kdbpg"]
 [ext_resource type="Theme" uid="uid://ddy7f277tnjo5" path="res://assets/themes/fonts/game-title.tres" id="4_vkhoa"]
 [ext_resource type="Theme" uid="uid://o8k6uollg46x" path="res://assets/themes/fonts/hud-text.tres" id="5_ctld7"]
+[ext_resource type="Resource" uid="uid://cwmmsyek4dji6" path="res://ingredients/variations/cheese.tres" id="5_l66k3"]
+[ext_resource type="Resource" uid="uid://qeaj5eug4f58" path="res://ingredients/variations/chicken.tres" id="6_wxsav"]
+[ext_resource type="Resource" uid="uid://b2op4gnr6nkpo" path="res://ingredients/variations/groundbeef.tres" id="7_fb8ll"]
+[ext_resource type="Resource" uid="uid://bqmf8vh8g56b6" path="res://ingredients/variations/jalapenos.tres" id="8_xqn4v"]
+[ext_resource type="Resource" uid="uid://c0btdeco6tgvw" path="res://ingredients/variations/mushroom.tres" id="9_ldofu"]
+[ext_resource type="Resource" uid="uid://pfshac5vwy4e" path="res://ingredients/variations/pepperoni.tres" id="10_r2s7q"]
+[ext_resource type="Resource" uid="uid://bpklbkylqt3cx" path="res://ingredients/variations/pineapple.tres" id="11_bhrlf"]
+[ext_resource type="Resource" uid="uid://c5li8bnkkaudy" path="res://ingredients/variations/redonion.tres" id="12_cooab"]
+[ext_resource type="Resource" uid="uid://cdqtgdoidbras" path="res://ingredients/variations/smokedsalmon.tres" id="12_j0mfs"]
+[ext_resource type="Resource" uid="uid://doiqf7sf78n4k" path="res://ingredients/variations/sweetpepper.tres" id="13_fl8iq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xuny"]
 
@@ -48,6 +60,7 @@ _data = {
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
 mode = 1
+available_ingredient_data = Array[Resource("res://ingredients/ingredient_data.gd")]([ExtResource("3_ui66t"), ExtResource("4_kdbpg"), ExtResource("5_l66k3"), ExtResource("6_wxsav"), ExtResource("7_fb8ll"), ExtResource("8_xqn4v"), ExtResource("9_ldofu"), ExtResource("10_r2s7q"), ExtResource("11_bhrlf"), ExtResource("12_cooab"), ExtResource("12_j0mfs"), ExtResource("13_fl8iq")])
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
