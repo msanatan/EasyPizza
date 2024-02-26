@@ -19,7 +19,8 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @onready var game_timer: Timer = $GameTimer
 
 var current_state: GameState = GameState.READY
-var score = 0
+var score: int = 0
+var pizzas_seen: int = 0
 var ingredient_data: Array[IngredientData] = []
 var available_ingredients: Array[Ingredient] = []
 var available_ingredient_data: Array[IngredientData] = []
@@ -57,7 +58,14 @@ func _input(event):
 ## Gets the ingredients to be guessed
 func begin_round() -> void:
 	already_guessed_ingredients = []
-	current_ingredients = get_random_ingredient_data(1)
+	var num_toppings = 1
+	if pizzas_seen >= 2 and pizzas_seen < 5:
+		num_toppings = 2
+	elif pizzas_seen >= 5 and pizzas_seen < 10:
+		num_toppings = 3
+	elif pizzas_seen >= 10:
+		num_toppings = 4
+	current_ingredients = get_random_ingredient_data(num_toppings)
 	remaining_guesses = current_ingredients.size()
 	pizzas[current_pizza_index].add_toppings(current_ingredients)
 	pizzas[current_pizza_index].enter_scene()
@@ -153,6 +161,7 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 
 	remaining_guesses -= 1
 	if remaining_guesses == 0:
+		pizzas_seen += 1
 		end_round()
 
 
