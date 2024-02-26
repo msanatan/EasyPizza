@@ -51,47 +51,47 @@ script = ExtResource("2_k2syf")
 
 [node name="Topping01" type="Sprite2D" parent="Toppings"]
 position = Vector2(-3, 0)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping02" type="Sprite2D" parent="Toppings"]
 position = Vector2(-6, 159)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping03" type="Sprite2D" parent="Toppings"]
 position = Vector2(151, -39)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping04" type="Sprite2D" parent="Toppings"]
 position = Vector2(58, -22)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping05" type="Sprite2D" parent="Toppings"]
 position = Vector2(126, 67)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping06" type="Sprite2D" parent="Toppings"]
 position = Vector2(-56, 86)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping07" type="Sprite2D" parent="Toppings"]
 position = Vector2(20, -161)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping08" type="Sprite2D" parent="Toppings"]
 position = Vector2(-57, -92)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="Topping09" type="Sprite2D" parent="Toppings"]
 position = Vector2(-132, -15)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_r6iwl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
