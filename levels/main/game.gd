@@ -7,7 +7,7 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @export var resources_path: String = "res://ingredients/variations/"
 @export var ingredient_scene: PackedScene
 @export var mode: Difficuluty
-@export var ingredient_size = 196
+@export var ingredient_size = 256
 @export var row_size = 3
 @export var score_increment = 5
 @export var round_duration_seconds = 60
