@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ddy7f277tnjo5"]
+
+[ext_resource type="FontFile" uid="uid://iuxkqk67hslw" path="res://assets/fonts/Kenney Blocks.ttf" id="1_pe0af"]
+
+[resource]
+default_font = ExtResource("1_pe0af")
+default_font_size = 132
