@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://bqmf8vh8g56b6"]
+[gd_resource type="Resource" script_class="IngredientData" load_steps=4 format=3 uid="uid://bqmf8vh8g56b6"]
 
+[ext_resource type="Texture2D" uid="uid://bv4gvfh50si7a" path="res://assets/images/jalapeno.png" id="1_miyry"]
 [ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_ypmgq"]
 [ext_resource type="Texture2D" uid="uid://ddjb0f65tpg5b" path="res://assets/images/placeholder04.png" id="2_ap3yw"]
 
 [resource]
 script = ExtResource("1_ypmgq")
 name = "jalapenos"
-container_texture = ExtResource("2_ap3yw")
+container_texture = ExtResource("1_miyry")
 pizza_texture = ExtResource("2_ap3yw")

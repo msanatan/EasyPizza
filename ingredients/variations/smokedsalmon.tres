@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://cdqtgdoidbras"]
+[gd_resource type="Resource" script_class="IngredientData" load_steps=4 format=3 uid="uid://cdqtgdoidbras"]
 
 [ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_lv34a"]
+[ext_resource type="Texture2D" uid="uid://jg2a5qtnt78o" path="res://assets/images/smokedsalmon.png" id="1_qlm4q"]
 [ext_resource type="Texture2D" uid="uid://dq15c663k4kba" path="res://assets/images/placeholder09.png" id="2_a0xk8"]
 
 [resource]
 script = ExtResource("1_lv34a")
 name = "smokedsalmon"
-container_texture = ExtResource("2_a0xk8")
+container_texture = ExtResource("1_qlm4q")
 pizza_texture = ExtResource("2_a0xk8")

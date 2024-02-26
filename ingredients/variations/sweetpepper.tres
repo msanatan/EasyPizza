@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://doiqf7sf78n4k"]
+
+[ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_thbs2"]
+[ext_resource type="Texture2D" uid="uid://1h21im52ch3u" path="res://assets/images/sweetpepper.png" id="1_vqkij"]
+
+[resource]
+script = ExtResource("1_thbs2")
+name = "sweetpepper"
+container_texture = ExtResource("1_vqkij")

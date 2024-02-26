@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientData" load_steps=3 format=3 uid="uid://cwmmsyek4dji6"]
+
+[ext_resource type="Script" path="res://ingredients/ingredient_data.gd" id="1_eayw6"]
+[ext_resource type="Texture2D" uid="uid://k851m1xy0shp" path="res://assets/images/cheese.png" id="1_wberv"]
+
+[resource]
+script = ExtResource("1_eayw6")
+name = "cheese"
+container_texture = ExtResource("1_wberv")
