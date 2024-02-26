@@ -9,6 +9,7 @@ signal ingredient_selected
 
 @onready var cover_sprite: Sprite2D = $CoverSprite
 @onready var after_click_timer: Timer = $AfterClickTimer
+var input_lock: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +17,9 @@ func _ready():
 	cover_sprite.hide()
 
 
-func _on_input_event(viewport, event, shape_idx):
-	if is_playing and Input.is_action_just_pressed("click"):
-		print("%s was touched" % ingredient_name)
+func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
+	if is_playing and not input_lock and event.is_action_pressed("click"):
+		input_lock = true
 		emit_signal("ingredient_selected", ingredient_name)
 		after_click_timer.start()
 		cover_sprite.hide()
@@ -36,4 +37,4 @@ func set_is_playing(value: bool) -> void:
 
 func _on_after_click_timer_timeout():
 	cover_sprite.show()
-	after_click_timer.stop()
+	input_lock = false
