@@ -13,10 +13,14 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @export var round_duration_seconds = 60
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
+@onready var pizza_pool: Node2D = $PizzaPool
+@onready var hud: CanvasLayer = $HUD
 @onready var ready_label: Label = $HUD/ReadyLabel
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var time_remaining_label: Label = $HUD/TimeRemainingLabel
 @onready var game_timer: Timer = $GameTimer
+@onready var game_over_animation_player: AnimationPlayer = $GameOverMenu/AnimationPlayer
+@onready var game_over_score_label: Label = $GameOverMenu/Panel/FinalScoreLabel
 
 var current_state: GameState = GameState.READY
 var score: int = 0
@@ -174,8 +178,17 @@ func _on_game_timer_timeout():
 		current_state = GameState.ROUND_OVER
 		for ingredient in available_ingredients:
 			ingredient.set_is_playing(false)
+		ingredients_container.hide()
+		pizza_pool.hide()
+		hud.hide()
+		game_over_score_label.text = "Final Score: %d" % score
+		game_over_animation_player.play("panel_down")
 
 
 ## If the user wants to play again, reload the scene
 func reload() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_retry_button_pressed():
+	reload()

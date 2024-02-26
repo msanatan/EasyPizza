@@ -1,10 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=10 format=3 uid="uid://dxp5s1pwqmlg2"]
 
 [ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/ingredient/ingredient.tscn" id="2_e1ilo"]
 [ext_resource type="PackedScene" uid="uid://11imkwjsocn7" path="res://pizza/pizza.tscn" id="3_yf4nk"]
 [ext_resource type="Theme" uid="uid://ddy7f277tnjo5" path="res://assets/themes/fonts/game-title.tres" id="4_vkhoa"]
 [ext_resource type="Theme" uid="uid://o8k6uollg46x" path="res://assets/themes/fonts/hud-text.tres" id="5_ctld7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xuny"]
+
+[sub_resource type="Animation" id="Animation_oeu22"]
+resource_name = "panel_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1920), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kjglt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6ws5"]
+_data = {
+"RESET": SubResource("Animation_kjglt"),
+"panel_down": SubResource("Animation_oeu22")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
@@ -74,4 +112,52 @@ position = Vector2(540, 1024)
 
 [node name="GameOverMenu" type="CanvasLayer" parent="."]
 
+[node name="Panel" type="Panel" parent="GameOverMenu"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1920.0
+offset_bottom = -1920.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_top = 512.0
+offset_right = 414.0
+offset_bottom = 656.0
+grow_horizontal = 2
+theme = ExtResource("4_vkhoa")
+theme_override_font_sizes/font_size = 80
+text = "Final Score: "
+
+[node name="RetryButton" type="Button" parent="GameOverMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -54.0
+offset_right = 162.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_vkhoa")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7xuny")
+text = "Retry?"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_s6ws5")
+}
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="pressed" from="GameOverMenu/Panel/RetryButton" to="." method="_on_retry_button_pressed"]
