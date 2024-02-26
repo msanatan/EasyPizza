@@ -47,7 +47,7 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
-round_duration_seconds = 10
+mode = 1
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
