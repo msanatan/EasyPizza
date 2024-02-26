@@ -131,6 +131,9 @@ func get_random_ingredient_data(num_ingredients: int) -> Array[IngredientData]:
 ## We add points to their score if correct, and give them feedback
 ## If they ran out of guesses, we go to the next round
 func check_ingredient_selection(ingredient_name: String) -> void:
+	if already_guessed_ingredients.has(ingredient_name):
+		return
+
 	var is_correct = false
 	for ingredient in current_ingredients:
 		if ingredient.name == ingredient_name and not already_guessed_ingredients.has(ingredient_name):
