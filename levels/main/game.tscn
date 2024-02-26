@@ -11,6 +11,17 @@ script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
 round_duration_seconds = 10
 
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.815686, 0.576471, 0.517647, 1)
+
 [node name="PizzaPool" type="Node2D" parent="."]
 
 [node name="Pizza01" parent="PizzaPool" instance=ExtResource("3_yf4nk")]
