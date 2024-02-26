@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Easy Pizza"
+config/name="Memory Pizza"
 config/version="1.0.0"
 run/main_scene="res://levels/main/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
