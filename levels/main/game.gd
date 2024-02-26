@@ -11,7 +11,7 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @export var row_size = 3
 @export var score_increment = 5
 @export var round_duration_seconds = 60
-@export var available_ingredient_data: Array[IngredientData] = []
+@export var ingredient_data: Array[IngredientData] = []
 
 @onready var ingredients_container: Node2D = $IngredientsContainer
 @onready var pizza_pool: Node2D = $PizzaPool
@@ -26,7 +26,7 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 var current_state: GameState = GameState.READY
 var score: int = 0
 var pizzas_seen: int = 0
-var ingredient_data: Array[IngredientData] = []
+var available_ingredient_data: Array[IngredientData] = []
 var available_ingredients: Array[Ingredient] = []
 var current_ingredients: Array[IngredientData] = []
 var already_guessed_ingredients: Array[String] = []

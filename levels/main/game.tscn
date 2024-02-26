@@ -60,7 +60,7 @@ _data = {
 script = ExtResource("1_ey8fq")
 ingredient_scene = ExtResource("2_e1ilo")
 mode = 1
-available_ingredient_data = Array[Resource("res://ingredients/ingredient_data.gd")]([ExtResource("3_ui66t"), ExtResource("4_kdbpg"), ExtResource("5_l66k3"), ExtResource("6_wxsav"), ExtResource("7_fb8ll"), ExtResource("8_xqn4v"), ExtResource("9_ldofu"), ExtResource("10_r2s7q"), ExtResource("11_bhrlf"), ExtResource("12_cooab"), ExtResource("12_j0mfs"), ExtResource("13_fl8iq")])
+ingredient_data = Array[Resource("res://ingredients/ingredient_data.gd")]([ExtResource("3_ui66t"), ExtResource("4_kdbpg"), ExtResource("5_l66k3"), ExtResource("6_wxsav"), ExtResource("7_fb8ll"), ExtResource("8_xqn4v"), ExtResource("9_ldofu"), ExtResource("10_r2s7q"), ExtResource("11_bhrlf"), ExtResource("12_cooab"), ExtResource("12_j0mfs"), ExtResource("13_fl8iq")])
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
