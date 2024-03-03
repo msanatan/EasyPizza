@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxp5s1pwqmlg2"]
+[gd_scene load_steps=24 format=3 uid="uid://dxp5s1pwqmlg2"]
 
 [ext_resource type="Script" path="res://levels/main/game.gd" id="1_ey8fq"]
 [ext_resource type="PackedScene" uid="uid://ba4wxpnile4r0" path="res://ingredients/ingredient/ingredient.tscn" id="2_e1ilo"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://c5li8bnkkaudy" path="res://ingredients/variations/redonion.tres" id="12_cooab"]
 [ext_resource type="Resource" uid="uid://cdqtgdoidbras" path="res://ingredients/variations/smokedsalmon.tres" id="12_j0mfs"]
 [ext_resource type="Resource" uid="uid://doiqf7sf78n4k" path="res://ingredients/variations/sweetpepper.tres" id="13_fl8iq"]
+[ext_resource type="PackedScene" uid="uid://crb5ofl0n8r8p" path="res://shake_camera/shake_camera_2d.tscn" id="18_vfrfc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xuny"]
 
@@ -55,6 +56,10 @@ _data = {
 "RESET": SubResource("Animation_kjglt"),
 "panel_down": SubResource("Animation_oeu22")
 }
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y8i3v"]
+noise_type = 3
+seed = 255
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ey8fq")
@@ -171,6 +176,12 @@ text = "Retry?"
 libraries = {
 "": SubResource("AnimationLibrary_s6ws5")
 }
+
+[node name="ShakeCamera2D" parent="." instance=ExtResource("18_vfrfc")]
+position = Vector2(540, 960)
+decay = 0.5
+max_offset = Vector2(150, 50)
+noise = SubResource("FastNoiseLite_y8i3v")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="pressed" from="GameOverMenu/Panel/RetryButton" to="." method="_on_retry_button_pressed"]

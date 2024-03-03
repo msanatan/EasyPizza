@@ -21,6 +21,7 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @onready var game_timer: Timer = $GameTimer
 @onready var game_over_animation_player: AnimationPlayer = $GameOverMenu/AnimationPlayer
 @onready var game_over_score_label: Label = $GameOverMenu/Panel/FinalScoreLabel
+@onready var shake_camera: ShakeCamera2D = $ShakeCamera2D
 
 var current_state: GameState = GameState.READY
 var score: int = 0
@@ -149,6 +150,8 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 		score_label.text = "Score: %d" % score
 	else:
 		print("%s is not on the pizza! New score is %d" % [ingredient_name, score])
+		shake_camera.add_trauma(1.8)
+		shake_camera.shake()
 
 	remaining_guesses -= 1
 	if remaining_guesses == 0:
