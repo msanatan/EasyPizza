@@ -3,13 +3,13 @@ extends Camera2D
 
 # Taken from Kids can Code Godot 3 tutorial: https://kidscancode.org/godot_recipes/3.x/2d/screen_shake/index.html
 
-## How quickly shaking will stop [0,1].
+## How quickly shaking will stop [0,1]
 @export_range(0, 1) var decay = 0.8
-## Maximum displacement in pixels.
+## Maximum displacement in pixels
 @export var max_offset: Vector2 = Vector2(100,75)
-## Maximum rotation in radians (use sparingly).
+## Maximum rotation in radians (use sparingly)
 @export var max_roll: float = 0.1
-## The source of random values.
+## The source of random values
 @export var noise: FastNoiseLite
 
 var noise_y = 0 # Value used to move through the noise
