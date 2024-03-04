@@ -1,6 +1,8 @@
 class_name Pizza
 extends Sprite2D
 
+signal pizza_exit_complete
+
 @onready var animation_player = $AnimationPlayer
 @onready var toppings_container = $Toppings
 
@@ -44,3 +46,5 @@ func exit_scene() -> void:
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "pizza_exit_scene":
 		reset()
+		emit_signal("pizza_exit_complete")
+		
