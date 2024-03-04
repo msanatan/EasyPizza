@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmf8nes2xb8qf"]
+
+[ext_resource type="Script" path="res://logo/logo.gd" id="1_6kp8e"]
+[ext_resource type="PackedScene" uid="uid://dxp5s1pwqmlg2" path="res://levels/main/game.tscn" id="2_pbfq6"]
+[ext_resource type="Texture2D" uid="uid://blmtgtr6kotfk" path="res://logo/gameboymarcus-logo.png" id="2_t5m14"]
+
+[sub_resource type="Animation" id="Animation_x6dtw"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m2xun"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqltj"]
+_data = {
+"RESET": SubResource("Animation_m2xun"),
+"fade": SubResource("Animation_x6dtw")
+}
+
+[node name="Logo" type="Node2D"]
+script = ExtResource("1_6kp8e")
+next_scene = ExtResource("2_pbfq6")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(540, 960)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_t5m14")
+
+[node name="FadeColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xqltj")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
