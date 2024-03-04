@@ -108,7 +108,9 @@ func setup_ingredients():
 func setup_pizzas():
 	var children = $PizzaPool.get_children()
 	for child in children:
-		pizzas.append(child as Pizza)
+		var pizza = child as Pizza
+		pizzas.append(pizza)
+		pizza.connect("pizza_exit_complete", hide_ingredients)
 	current_pizza_index = 0
 
 
@@ -157,6 +159,12 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 	if remaining_guesses == 0:
 		pizzas_seen += 1
 		end_round()
+
+
+## Hide all ingredients, this should occur before every guess
+func hide_ingredients() -> void:
+	for ai in available_ingredients:
+		ai.hide_ingredient()
 
 
 func _on_game_timer_timeout():
