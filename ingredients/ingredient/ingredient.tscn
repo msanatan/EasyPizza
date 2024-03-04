@@ -24,4 +24,3 @@ wait_time = 0.75
 one_shot = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="timeout" from="AfterClickTimer" to="." method="_on_after_click_timer_timeout"]
