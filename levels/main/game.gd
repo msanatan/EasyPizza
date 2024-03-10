@@ -18,6 +18,7 @@ enum GameState {READY, PLAYING, ROUND_OVER}
 @onready var ready_label: Label = $HUD/ReadyLabel
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var time_remaining_label: Label = $HUD/TimeRemainingLabel
+@onready var remaining_guesses_label: Label = $HUD/GuessesRemainingLabel
 @onready var game_timer: Timer = $GameTimer
 @onready var game_over_animation_player: AnimationPlayer = $GameOverMenu/AnimationPlayer
 @onready var game_over_score_label: Label = $GameOverMenu/Panel/FinalScoreLabel
@@ -55,6 +56,7 @@ func _input(event):
 		score_label.text = "Score: %d" % score
 		score_label.show()
 		time_remaining_label.show()
+		remaining_guesses_label.show()
 		begin_round()
 
 
@@ -70,6 +72,7 @@ func begin_round() -> void:
 		num_toppings = 4
 	current_ingredients = get_random_ingredient_data(num_toppings)
 	remaining_guesses = current_ingredients.size()
+	remaining_guesses_label.text = "Remaining Guesses: %d" % remaining_guesses
 	pizzas[current_pizza_index].add_toppings(current_ingredients)
 	pizzas[current_pizza_index].enter_scene()
 
@@ -156,6 +159,7 @@ func check_ingredient_selection(ingredient_name: String) -> void:
 		shake_camera.shake()
 
 	remaining_guesses -= 1
+	remaining_guesses_label.text = "Remaining Guesses: %d" % remaining_guesses
 	if remaining_guesses == 0:
 		pizzas_seen += 1
 		end_round()

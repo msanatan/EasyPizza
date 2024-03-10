@@ -104,24 +104,30 @@ vertical_alignment = 1
 [node name="ScoreLabel" type="Label" parent="HUD"]
 visible = false
 offset_left = 64.0
-offset_top = 96.0
-offset_right = 257.0
-offset_bottom = 141.0
+offset_top = 32.0
+offset_right = 275.0
+offset_bottom = 82.0
+size_flags_horizontal = 4
 theme = ExtResource("5_ctld7")
 text = "Score: "
 
 [node name="TimeRemainingLabel" type="Label" parent="HUD"]
 visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -496.0
+offset_left = 64.0
 offset_top = 96.0
-offset_right = -64.0
-offset_bottom = 141.0
-grow_horizontal = 0
+offset_right = 538.0
+offset_bottom = 146.0
 theme = ExtResource("5_ctld7")
 text = "Time Remaining: "
+
+[node name="GuessesRemainingLabel" type="Label" parent="HUD"]
+visible = false
+offset_left = 64.0
+offset_top = 160.0
+offset_right = 538.0
+offset_bottom = 210.0
+theme = ExtResource("5_ctld7")
+text = "Remaining Guesses: "
 
 [node name="IngredientsContainer" type="Node2D" parent="."]
 position = Vector2(540, 1024)
